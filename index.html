@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<script async="async" data-cfasync="false" src="//pl26214361.profitableratecpm.com/be357bf91760d442990ce3121a3a6857/invoke.js"></script>
+<div id="container-be357bf91760d442990ce3121a3a6857"></div>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Palmistry - Unveil Your Destiny</title>
+
+    <!-- Google Fonts for a premium look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+    <!-- CSS Code Start -->
+    <style>
+        :root {
+            --primary-red: #8B0000; /* Deep Maroon */
+            --darker-red: #6e0000;
+            --primary-gold: #FFD700; /* Bright Gold */
+            --text-light: #FFF8E1; /* Light Creamy White */
+        }
+
+        html {
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle, var(--primary-red), var(--darker-red));
+            color: var(--text-light);
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .main-container {
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        header h1 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-gold);
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* The main interactive button */
+        #scan-btn {
+            background: linear-gradient(145deg, #ffeb3b, var(--primary-gold));
+            color: var(--primary-red);
+            padding: 18px 40px;
+            border: 2px solid #fff;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+            letter-spacing: 1px;
+            display: inline-block; /* Prevents it from taking full width */
+        }
+
+        #scan-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Hidden input for camera functionality */
+        #image-input {
+            display: none;
+        }
+        
+        /* The preview image that appears after taking a photo */
+        .preview-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary-gold);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        /* Loader Animation */
+        .loader {
+            margin: 40px 0;
+        }
+        .spinner {
+            border: 8px solid rgba(255, 215, 0, 0.2);
+            border-top: 8px solid var(--primary-gold);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1.5s linear infinite;
+            margin: 0 auto 15px;
+        }
+        .loader p {
+            font-size: 1.2em;
+            color: var(--primary-gold);
+            font-family: 'Cinzel', serif;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Result Section */
+        #result-container {
+            margin-top: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        #result-container h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-gold);
+            margin-top: 0;
+        }
+        #prediction-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .hidden { display: none; }
+        
+        footer {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design for smaller phones */
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2.2em;
+            }
+            #scan-btn {
+                padding: 15px 30px;
+                font-size: 18px;
+            }
+            .preview-image {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+    <!-- CSS Code End -->
+</head>
+<body>
+
+    <div class="main-container">
+        <header>
+            <h1>AI Palmistry</h1>
+            <p>Our advanced AI will scan the lines of your palm to reveal the secrets of your destiny.</p>
+        </header>
+
+        <main id="main-content">
+            <!-- This container will hold dynamic content -->
+        </main>
+        
+        <footer>
+            <p>Disclaimer: This service is for entertainment purposes only.</p>
+        </footer>
+    </div>
+
+    <!-- Hidden file input that opens camera -->
+    <input type="file" id="image-input" accept="image/*" capture="user">
+
+    <!-- JavaScript Code Start -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const imageInput = document.getElementById('image-input');
+            const mainContent = document.getElementById('main-content');
+
+            // "AI-powered" predictions
+            const predictions = [
+                "Our AI analysis indicates a strong Life Line, suggesting robust vitality and a life full of adventure. The algorithm points to a significant positive event in the next two years.",
+                "The neural network has detected a deep and clear Head Line. This signifies exceptional intelligence and a talent for strategic thinking. Your career path shows a sharp upward trajectory.",
+                "Data points on your Heart Line are exceptionally positive, indicating a life rich in meaningful relationships and emotional fulfillment. Our system predicts a new, powerful connection on the horizon.",
+                "The algorithm highlights a well-defined Fate Line, suggesting that you are the master of your own destiny. Hard work will be met with great success, especially in creative fields.",
+                "Our system has identified unique markers on your Sun Line, a rare sign of potential fame and public recognition. Your charisma is a powerful asset; use it wisely.",
+                "Analysis of your palm's structure points to a natural leader. The algorithm predicts you will soon be in a position of authority where your decisions will impact many.",
+                "The AI detects a travel line intersecting with your Fate Line. Prepare for a life-changing journey that will broaden your perspective and bring unexpected opportunities."
+            ];
+
+            // Initial state: Show the main button
+            function showInitialButton() {
+                mainContent.innerHTML = `<button id="scan-btn">Scan Your Palm</button>`;
+                document.getElementById('scan-btn').addEventListener('click', () => {
+                    imageInput.click();
+                });
+            }
+
+            // When user selects an image from the camera
+            imageInput.addEventListener('change', (event) => {
+                if (event.target.files && event.target.files[0]) {
+                    const file = event.target.files[0];
+                    const imageURL = URL.createObjectURL(file);
+                    
+                    // Show the captured image and a new button
+                    mainContent.innerHTML = `
+                        <img src="${imageURL}" alt="Your Palm" class="preview-image">
+                        <button id="scan-btn">Get AI Reading</button>
+                    `;
+                    document.getElementById('scan-btn').addEventListener('click', showPrediction);
+                }
+            });
+
+            // Show the loading animation and then the result
+            function showPrediction() {
+                // Show loader
+                mainContent.innerHTML = `
+                    <div class="loader">
+                        <div class="spinner"></div>
+                        <p>AI analyzing palm data...</p>
+                    </div>
+                `;
+
+                // Simulate AI analysis
+                setTimeout(() => {
+                    const randomIndex = Math.floor(Math.random() * predictions.length);
+                    
+                    // Show result and a "Scan Again" button
+                    mainContent.innerHTML = `
+                        <div id="result-container">
+                            <h2>Your AI Reading</h2>
+                            <p id="prediction-text">${predictions[randomIndex]}</p>
+                        </div>
+                        <button id="scan-btn" style="margin-top: 25px;">Scan Again</button>
+                    `;
+                    document.getElementById('scan-btn').addEventListener('click', resetApp);
+                }, 3500); // 3.5-second delay for a realistic feel
+            }
+            
+            // Reset the app to the initial state
+            function resetApp() {
+                imageInput.value = ""; // Clear the file input
+                showInitialButton();
+            }
+
+            // Start the app
+            showInitialButton();
+        });
+    </script>
+    <!-- JavaScript Code End -->
+
+</body>
+</html>
+<script type='text/javascript' src='//pl26830183.profitableratecpm.com/c5/1f/74/c51f742f532112f401cde93285ece8ea.js'></script>
